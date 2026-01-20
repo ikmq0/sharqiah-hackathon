@@ -3,7 +3,6 @@ import {
     Map,
     Building2,
     AlertTriangle,
-    Settings,
     LogOut
 } from "lucide-react";
 import Link from "next/link";

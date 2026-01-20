@@ -22,9 +22,9 @@ const mockMinistries: Ministry[] = [
 
 export function MinistryLeaderboard() {
     return (
-        <div className="bg-white dark:bg-[#003323] rounded-2xl p-6 border border-gray-100 dark:border-[#004d35] h-full overflow-hidden flex flex-col">
+        <div className="bg-white rounded-2xl p-6 border border-gray-100 h-full overflow-hidden flex flex-col">
             <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg text-saudi-green dark:text-white flex items-center gap-2">
+                <h3 className="font-bold text-lg text-saudi-green flex items-center gap-2">
                     📊 ترتيب الوزارات
                 </h3>
                 <button className="text-xs text-saudi-gold hover:underline">عرض الكل</button>
@@ -32,7 +32,7 @@ export function MinistryLeaderboard() {
 
             <div className="overflow-x-auto">
                 <table className="w-full text-sm text-right">
-                    <thead className="text-xs text-gray-500 font-medium bg-gray-50 dark:bg-[#004d35]/30 rounded-lg">
+                    <thead className="text-xs text-gray-500 font-medium bg-gray-50 rounded-lg">
                         <tr>
                             <th className="pb-3 pt-3 pr-3 rounded-r-lg">الوزارة</th>
                             <th className="pb-3 pt-3">الشكاوى</th>
@@ -40,18 +40,18 @@ export function MinistryLeaderboard() {
                             <th className="pb-3 pt-3 pl-3 rounded-l-lg">الرضا</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-100 dark:divide-[#004d35]">
+                    <tbody className="divide-y divide-gray-100">
                         {mockMinistries.map((ministry) => (
-                            <tr key={ministry.id} className="group hover:bg-gray-50 dark:hover:bg-[#004d35]/20 transition-colors">
-                                <td className="py-4 pr-3 font-medium text-gray-800 dark:text-gray-200">
+                            <tr key={ministry.id} className="group hover:bg-gray-50 transition-colors">
+                                <td className="py-4 pr-3 font-medium text-gray-800">
                                     {ministry.name}
                                 </td>
-                                <td className="py-4 text-gray-600 dark:text-gray-400 font-mono">
+                                <td className="py-4 text-gray-600 font-mono">
                                     {ministry.complaints.toLocaleString('en-US')}
                                 </td>
                                 <td className="py-4">
                                     <div className="flex items-center gap-2">
-                                        <div className="w-16 h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+                                        <div className="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
                                             <div
                                                 className="h-full bg-saudi-green"
                                                 style={{ width: `${ministry.resolvedRate}%` }}
@@ -63,7 +63,7 @@ export function MinistryLeaderboard() {
                                 <td className="py-4 pl-3">
                                     <div className="flex items-center gap-2">
                                         <span className={`text-xs font-bold font-mono ${ministry.sentiment > 70 ? 'text-green-600' :
-                                                ministry.sentiment > 50 ? 'text-yellow-600' : 'text-red-500'
+                                            ministry.sentiment > 50 ? 'text-yellow-600' : 'text-red-500'
                                             }`}>
                                             {ministry.sentiment}/100
                                         </span>

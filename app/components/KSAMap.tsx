@@ -19,64 +19,89 @@ const regions = [
     { id: 13, name: "القصيم", x: 45, y: 45, intensity: "high", count: 4500 },
 ];
 
+// SVG Paths for the 13 Regions of Saudi Arabia (Stylized/Approximate)
+const regionPaths: Record<number, string> = {
+    1: "M55,45 L65,45 L65,60 L50,65 L45,55 Z", // Riyadh
+    2: "M25,50 L35,55 L35,70 L25,65 Z", // Makkah
+    3: "M25,30 L35,30 L35,50 L25,45 Z", // Madinah
+    4: "M65,30 L90,35 L95,60 L65,65 L65,45 Z", // Eastern Province
+    5: "M30,70 L40,70 L40,80 L30,80 Z", // Asir
+    6: "M15,15 L30,15 L25,30 L15,25 Z", // Tabuk
+    7: "M35,30 L45,30 L45,40 L35,40 Z", // Hail
+    8: "M30,10 L70,10 L65,30 L35,25 Z", // Northern Borders
+    9: "M30,80 L35,80 L35,85 L30,85 Z", // Jazan
+    10: "M40,75 L60,75 L55,85 L40,85 Z", // Najran
+    11: "M28,65 L32,65 L32,70 L28,70 Z", // Baha
+    12: "M25,15 L35,15 L35,25 L25,25 Z", // Jouf
+    13: "M40,40 L50,40 L50,45 L40,45 Z", // Qassim
+};
+
 export function KSAMap() {
     const [selectedRegion, setSelectedRegion] = useState<number | null>(null);
 
-    const getColor = (intensity: string) => {
+    const getIntensityColor = (intensity: string) => {
         switch (intensity) {
-            case 'critical': return 'bg-red-500 animate-pulse';
-            case 'high': return 'bg-orange-500';
-            case 'medium': return 'bg-yellow-500';
-            default: return 'bg-saudi-green';
+            case 'critical': return '#ef4444'; // red-500
+            case 'high': return '#f97316'; // orange-500
+            case 'medium': return '#eab308'; // yellow-500
+            case 'low': return '#004d35'; // saudi-green
+            default: return '#e5e7eb'; // gray-200
         }
     };
 
     return (
-        <div className="w-full h-full min-h-[500px] relative bg-[#f8fcfb] dark:bg-[#002b1d] rounded-2xl overflow-hidden shadow-inner flex items-center justify-center p-8">
-            {/* Background Pattern / Texture could go here */}
-
-            <div className="absolute top-6 right-6 z-10 bg-white/90 dark:bg-[#004d35]/90 p-4 rounded-xl shadow-lg border border-gray-100 dark:border-saudi-gold/20 backdrop-blur-sm">
-                <h4 className="text-sm font-bold text-gray-800 dark:text-white mb-2">مؤشر البلاغات الحرارية</h4>
+        <div className="w-full h-full min-h-[500px] relative bg-[#f8fcfb] rounded-2xl overflow-hidden shadow-inner flex items-center justify-center p-8">
+            <div className="absolute top-6 right-6 z-10 bg-white/90 p-4 rounded-xl shadow-lg border border-gray-100 backdrop-blur-sm">
+                <h4 className="text-sm font-bold text-gray-800 mb-2">مؤشر البلاغات الحرارية</h4>
                 <div className="space-y-2 text-xs">
-                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-red-500"></span> <span>حرج (أكثر من 10k)</span></div>
-                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-orange-500"></span> <span>مرتفع (5k - 10k)</span></div>
-                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-yellow-500"></span> <span>متوسط (2k - 5k)</span></div>
+                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-red-500"></span> <span>حرج</span></div>
+                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-orange-500"></span> <span>مرتفع</span></div>
+                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-yellow-500"></span> <span>متوسط</span></div>
                     <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-saudi-green"></span> <span>طبيعي</span></div>
                 </div>
             </div>
 
-            <div className="relative w-full max-w-[600px] aspect-[4/5]">
-                {/* Placeholder SVG - stylized map shape */}
-                <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-2xl opacity-50 absolute inset-0">
-                    <path d="M25,20 C30,10 60,10 70,20 L80,45 L75,70 L55,90 L30,85 L20,60 L20,30 Z" fill="#004d35" className="fill-gray-200 dark:fill-[#003323] stroke-saudi-gold stroke-[0.5]" />
-                </svg>
+            <div className="relative w-full max-w-[600px] aspect-[4/5] p-4">
+                <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-xl filter">
+                    {regions.map((region) => (
+                        <g key={region.id}
+                            onClick={() => setSelectedRegion(region.id)}
+                            className="group cursor-pointer transition-all duration-300"
+                            onMouseEnter={() => setSelectedRegion(region.id)}
+                            onMouseLeave={() => setSelectedRegion(null)}
+                        >
+                            <path
+                                d={regionPaths[region.id] || "M0,0 Z"}
+                                fill={getIntensityColor(region.intensity)}
+                                fillOpacity={selectedRegion === region.id ? 1 : 0.8}
+                                stroke="white"
+                                strokeWidth={selectedRegion === region.id ? "1" : "0.5"}
+                                className="transition-all duration-300 ease-in-out transform group-hover:scale-105 origin-center"
+                            />
 
-                {/* Region Nodes */}
-                {regions.map((region) => (
-                    <button
-                        key={region.id}
-                        onClick={() => setSelectedRegion(region.id)}
-                        className="absolute transform -translate-x-1/2 -translate-y-1/2 group focus:outline-none"
-                        style={{ left: `${region.x}%`, top: `${region.y}%` }}
-                    >
-                        <div className={`relative flex items-center justify-center transition-all duration-300 ${selectedRegion === region.id ? 'scale-125 z-20' : 'hover:scale-110'}`}>
-                            {/* Ripple Effect for Critical */}
-                            {region.intensity === 'critical' && (
-                                <span className="absolute w-full h-full rounded-full bg-red-500/30 animate-ping"></span>
+                            {/* Region Label Tooltip (Visible on Hover/Select) */}
+                            {selectedRegion === region.id && (
+                                <foreignObject x="0" y="0" width="100" height="100" className="pointer-events-none">
+                                    <div className="w-full h-full flex items-center justify-center">
+                                        <div
+                                            className="bg-white/95 px-3 py-1.5 rounded-lg shadow-xl text-[8px] font-bold text-gray-800 border border-saudi-green/20 transform -translate-y-8"
+                                            style={{
+                                                position: 'absolute',
+                                                left: `${region.x}%`,
+                                                top: `${region.y}%`
+                                            }}
+                                        >
+                                            <div className="text-center">
+                                                <div className="text-saudi-green">{region.name}</div>
+                                                <div className="text-gray-500 font-mono">{region.count} بلاغ</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
                             )}
-
-                            {/* Dot */}
-                            <div className={`w-4 h-4 rounded-full border-2 border-white dark:border-[#002b1d] shadow-md ${getColor(region.intensity)}`}></div>
-
-                            {/* Tooltip Label - Always visible on selected or hover */}
-                            <div className={`absolute top-6 whitespace-nowrap bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg text-xs font-bold transition-opacity
-                        ${selectedRegion === region.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
-                    `}>
-                                {region.name} ({region.count})
-                            </div>
-                        </div>
-                    </button>
-                ))}
+                        </g>
+                    ))}
+                </svg>
             </div>
         </div>
     );

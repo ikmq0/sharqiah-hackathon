@@ -8,15 +8,15 @@ export default function Home() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-saudi-green dark:text-white mb-2">
+          <h1 className="text-3xl font-bold text-saudi-green mb-2">
             اللوحة الوطنية
           </h1>
-          <p className="text-gray-500 dark:text-stone-400">
+          <p className="text-gray-500">
             نظرة شاملة على أداء الوزارات ورضا المواطنين
           </p>
         </div>
         <div className="flex gap-3">
-          <span className="px-4 py-2 bg-white dark:bg-[#003323] rounded-lg text-sm text-gray-500 dark:text-gray-300 border border-gray-100 dark:border-[#004d35]">
+          <span className="px-4 py-2 bg-white rounded-lg text-sm text-gray-500 border border-gray-100">
             آخر تحديث: منذ 5 دقائق
           </span>
         </div>
