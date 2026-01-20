@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import L from "leaflet";
 
 // Dynamically import map to avoid SSR issues with Leaflet
 const MapContainer = dynamic(
@@ -197,6 +198,18 @@ export function EasternProvinceMap() {
                         data={geoData as GeoJSON.GeoJsonObject}
                         style={styleFeature as L.StyleFunction}
                         onEachFeature={onEachFeature}
+                        pointToLayer={(feature, latlng) => {
+                            // Custom marker for rural points
+                            const isRural = feature.properties?.type === "Rural";
+                            return L.circleMarker(latlng, {
+                                radius: isRural ? 4 : 6,
+                                fillColor: isRural ? "#d4af37" : "#004d35", // Gold for rural, Green for cities
+                                color: "#fff",
+                                weight: 1,
+                                opacity: 1,
+                                fillOpacity: 0.8
+                            });
+                        }}
                     />
                 </MapContainer>
             ) : (
