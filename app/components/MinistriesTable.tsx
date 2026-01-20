@@ -4,29 +4,30 @@ import { useState, useMemo } from "react";
 import { ArrowUpDown, Search, Filter, Eye } from "lucide-react";
 import Link from "next/link";
 
-type Ministry = {
+type Department = {
     id: number;
     name: string;
     complaints: number;
     resolvedPercentage: number;
     responseTime: number; // in hours
     sentimentScore: number;
-    region: string;
+    district: string;
 };
 
-const initialMinistries: Ministry[] = [
-    { id: 1, name: "وزارة الصحة", complaints: 15430, resolvedPercentage: 88, responseTime: 24, sentimentScore: 65, region: "الرياض" },
-    { id: 2, name: "وزارة التعليم", complaints: 12100, resolvedPercentage: 75, responseTime: 48, sentimentScore: 58, region: "الرياض" },
-    { id: 3, name: "وزارة الشؤون البلدية", complaints: 8900, resolvedPercentage: 60, responseTime: 72, sentimentScore: 42, region: "مكة المكرمة" },
-    { id: 4, name: "وزارة النقل", complaints: 6500, resolvedPercentage: 92, responseTime: 12, sentimentScore: 80, region: "الشرقية" },
-    { id: 5, name: "وزارة الموارد البشرية", complaints: 4200, resolvedPercentage: 85, responseTime: 36, sentimentScore: 72, region: "الرياض" },
-    { id: 6, name: "وزارة التجارة", complaints: 3100, resolvedPercentage: 95, responseTime: 8, sentimentScore: 88, region: "الرياض" },
-    { id: 7, name: "وزارة الطاقة", complaints: 1200, resolvedPercentage: 98, responseTime: 4, sentimentScore: 92, region: "الشرقية" },
-    { id: 8, name: "وزارة الإعلام", complaints: 800, resolvedPercentage: 90, responseTime: 20, sentimentScore: 85, region: "الرياض" },
+// Eastern Province Government Departments & Neighborhoods
+const initialDepartments: Department[] = [
+    { id: 1, name: "أمانة المنطقة الشرقية", complaints: 4230, resolvedPercentage: 72, responseTime: 48, sentimentScore: 55, district: "الدمام" },
+    { id: 2, name: "بلدية الدمام", complaints: 3100, resolvedPercentage: 68, responseTime: 72, sentimentScore: 48, district: "الدمام" },
+    { id: 3, name: "بلدية الخبر", complaints: 2450, resolvedPercentage: 85, responseTime: 24, sentimentScore: 72, district: "الخبر" },
+    { id: 4, name: "بلدية الظهران", complaints: 890, resolvedPercentage: 92, responseTime: 12, sentimentScore: 88, district: "الظهران" },
+    { id: 5, name: "شركة المياه الوطنية", complaints: 1800, resolvedPercentage: 58, responseTime: 96, sentimentScore: 42, district: "المنطقة الشرقية" },
+    { id: 6, name: "شركة الكهرباء", complaints: 1200, resolvedPercentage: 78, responseTime: 8, sentimentScore: 65, district: "المنطقة الشرقية" },
+    { id: 7, name: "إدارة النظافة", complaints: 980, resolvedPercentage: 82, responseTime: 24, sentimentScore: 70, district: "الدمام" },
+    { id: 8, name: "إدارة الطرق", complaints: 1450, resolvedPercentage: 65, responseTime: 120, sentimentScore: 38, district: "المنطقة الشرقية" },
 ];
 
 type SortConfig = {
-    key: keyof Ministry;
+    key: keyof Department;
     direction: 'asc' | 'desc';
 };
 
@@ -34,7 +35,7 @@ export function MinistriesTable() {
     const [searchTerm, setSearchTerm] = useState("");
     const [sortConfig, setSortConfig] = useState<SortConfig>({ key: 'complaints', direction: 'desc' });
 
-    const handleSort = (key: keyof Ministry) => {
+    const handleSort = (key: keyof Department) => {
         let direction: 'asc' | 'desc' = 'asc';
         if (sortConfig.key === key && sortConfig.direction === 'asc') {
             direction = 'desc';
@@ -42,8 +43,8 @@ export function MinistriesTable() {
         setSortConfig({ key, direction });
     };
 
-    const filteredAndSortedMinistries = useMemo(() => {
-        let result = [...initialMinistries];
+    const filteredAndSortedDepartments = useMemo(() => {
+        let result = [...initialDepartments];
 
         // Filter
         if (searchTerm) {
@@ -72,7 +73,7 @@ export function MinistriesTable() {
                     <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                     <input
                         type="text"
-                        placeholder="بحث عن وزارة..."
+                        placeholder="بحث عن جهة..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="w-full h-10 pr-10 pl-4 rounded-lg border border-gray-200 focus:ring-2 focus:ring-saudi-green focus:border-saudi-green outline-none text-sm transition-all bg-white"
@@ -123,36 +124,36 @@ export function MinistriesTable() {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
-                        {filteredAndSortedMinistries.map((ministry) => (
-                            <tr key={ministry.id} className="group hover:bg-blue-50/50 transition-colors">
-                                <td className="px-6 py-4 font-bold text-gray-800">{ministry.name}</td>
-                                <td className="px-6 py-4 font-mono text-gray-600">{ministry.complaints.toLocaleString()}</td>
+                        {filteredAndSortedDepartments.map((dept) => (
+                            <tr key={dept.id} className="group hover:bg-blue-50/50 transition-colors">
+                                <td className="px-6 py-4 font-bold text-gray-800">{dept.name}</td>
+                                <td className="px-6 py-4 font-mono text-gray-600">{dept.complaints.toLocaleString()}</td>
                                 <td className="px-6 py-4">
-                                    <span className={`px-2 py-1 rounded-full text-xs font-bold ${ministry.resolvedPercentage >= 80 ? 'bg-green-100 text-green-700' :
-                                            ministry.resolvedPercentage >= 60 ? 'bg-yellow-100 text-yellow-700' :
-                                                'bg-red-100 text-red-700'
+                                    <span className={`px-2 py-1 rounded-full text-xs font-bold ${dept.resolvedPercentage >= 80 ? 'bg-green-100 text-green-700' :
+                                        dept.resolvedPercentage >= 60 ? 'bg-yellow-100 text-yellow-700' :
+                                            'bg-red-100 text-red-700'
                                         }`}>
-                                        {ministry.resolvedPercentage}%
+                                        {dept.resolvedPercentage}%
                                     </span>
                                 </td>
-                                <td className="px-6 py-4 font-mono text-gray-600">{ministry.responseTime} ساعة</td>
+                                <td className="px-6 py-4 font-mono text-gray-600">{dept.responseTime} ساعة</td>
                                 <td className="px-6 py-4">
                                     <div className="flex items-center gap-2">
                                         <div className="w-20 h-2 bg-gray-100 rounded-full overflow-hidden">
                                             <div
-                                                className={`h-full rounded-full ${ministry.sentimentScore > 75 ? 'bg-green-500' :
-                                                        ministry.sentimentScore > 50 ? 'bg-yellow-500' :
-                                                            'bg-red-500'
+                                                className={`h-full rounded-full ${dept.sentimentScore > 75 ? 'bg-green-500' :
+                                                    dept.sentimentScore > 50 ? 'bg-yellow-500' :
+                                                        'bg-red-500'
                                                     }`}
-                                                style={{ width: `${ministry.sentimentScore}%` }}
+                                                style={{ width: `${dept.sentimentScore}%` }}
                                             ></div>
                                         </div>
-                                        <span className="text-xs font-bold">{ministry.sentimentScore}</span>
+                                        <span className="text-xs font-bold">{dept.sentimentScore}</span>
                                     </div>
                                 </td>
                                 <td className="px-6 py-4">
                                     <Link
-                                        href={`/ministry/${ministry.id}`}
+                                        href={`/ministry/${dept.id}`}
                                         className="flex items-center gap-1 text-saudi-green font-bold text-xs hover:underline"
                                     >
                                         <Eye className="w-3 h-3" />
@@ -167,7 +168,7 @@ export function MinistriesTable() {
 
             {/* Footer / Pagination Placeholder */}
             <div className="px-6 py-4 border-t border-gray-100 bg-gray-50 flex justify-between items-center text-xs text-gray-500">
-                <span>عرض {filteredAndSortedMinistries.length} من {initialMinistries.length} وزارة</span>
+                <span>عرض {filteredAndSortedDepartments.length} من {initialDepartments.length} جهة</span>
                 <div className="flex gap-2">
                     <button className="px-3 py-1 bg-white border border-gray-200 rounded hover:bg-gray-50 disabled:opacity-50" disabled>السابق</button>
                     <button className="px-3 py-1 bg-white border border-gray-200 rounded hover:bg-gray-50 disabled:opacity-50" disabled>التالي</button>

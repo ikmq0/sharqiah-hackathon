@@ -1,0 +1,27 @@
+/* Leaflet CSS Import */
+@import "leaflet/dist/leaflet.css";
+
+/* Custom tooltip styling */
+.custom-tooltip {
+    background: white !important;
+    border: 1px solid #004d35 !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    font-family: var(--font-ibm-plex-sans-arabic), sans-serif !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.custom-tooltip::before {
+    border-top-color: #004d35 !important;
+}
+
+/* Leaflet container fixes for Next.js */
+.leaflet-container {
+    font-family: var(--font-ibm-plex-sans-arabic), sans-serif;
+    z-index: 1;
+}
+
+.leaflet-control-attribution {
+    font-size: 10px;
+    direction: ltr;
+}

@@ -24,7 +24,7 @@ export function CriticalAlertCard() {
 
                 <div className="flex-1 flex flex-col justify-center py-4">
                     <div className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
-                        "تصدع هيكلي في جسر الملك فيصل - جازان"
+                        "تصدع هيكلي في جسر الكورنيش - الدمام"
                     </div>
                     <div className="p-4 bg-white rounded-xl border border-red-100">
                         <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
@@ -32,7 +32,7 @@ export function CriticalAlertCard() {
                             <span>تحليل الذكاء الاصطناعي:</span>
                         </div>
                         <p className="text-gray-700 leading-relaxed text-sm">
-                            على الرغم من ورود <span className="font-bold text-red-600">بلاغ واحد فقط</span>، إلا أن الصور المرفقة وتحليل الكلمات المفتاحية ("تشقق"، "سقوط"، "جسر") تشير إلى خطر وشيك يتطلب تدخلاً فورياً. تم تصعيد الحالة للدفاع المدني ووزارة النقل.
+                            على الرغم من ورود <span className="font-bold text-red-600">بلاغ واحد فقط</span>، إلا أن الصور المرفقة وتحليل الكلمات المفتاحية ("تشقق"، "خطر"، "جسر") تشير إلى خطر وشيك يتطلب تدخلاً فورياً. تم تصعيد الحالة للدفاع المدني وأمانة الشرقية.
                         </p>
                     </div>
                 </div>

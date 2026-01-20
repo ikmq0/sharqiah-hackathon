@@ -11,12 +11,12 @@ type FeedItem = {
 };
 
 const feedData: FeedItem[] = [
-    { id: 1, time: "الآن", message: "رصد تجمعات غير اعتيادية", location: "ملعب الملك فهد", type: "warning" },
-    { id: 2, time: "منذ 2 د", message: "انخفاض مؤشر جودة الهواء", location: "المنطقة الصناعية الثانية", type: "critical" },
-    { id: 3, time: "منذ 5 د", message: "تم حل بلاغ تسرب مياه", location: "حي العليا", type: "success" },
-    { id: 4, time: "منذ 12 د", message: "ازدياد في بلاغات الازدحام", location: "طريق الملك عبدالله", type: "info" },
-    { id: 5, time: "منذ 15 د", message: "رصد حفرية غير مطابقة", location: "حي النسيم", type: "warning" },
-    { id: 6, time: "منذ 22 د", message: "اكتمال معالجة التشوه البصري", location: "الواجهة البحرية", type: "success" },
+    { id: 1, time: "الآن", message: "رصد تجمعات غير اعتيادية", location: "كورنيش الدمام", type: "warning" },
+    { id: 2, time: "منذ 2 د", message: "انخفاض مؤشر جودة الهواء", location: "المنطقة الصناعية - الدمام", type: "critical" },
+    { id: 3, time: "منذ 5 د", message: "تم حل بلاغ تسرب مياه", location: "حي الفيصلية - الدمام", type: "success" },
+    { id: 4, time: "منذ 12 د", message: "ازدياد في بلاغات الازدحام", location: "طريق الملك فهد - الخبر", type: "info" },
+    { id: 5, time: "منذ 15 د", message: "رصد حفرية غير مطابقة", location: "حي الراكة - الخبر", type: "warning" },
+    { id: 6, time: "منذ 22 د", message: "اكتمال معالجة التشوه البصري", location: "واجهة الظهران البحرية", type: "success" },
 ];
 
 export function RealTimeFeed() {
