@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-ibm-plex-sans-arabic);
+  --font-sans: var(--font-ibm-plex-sans-arabic);
+
+  --color-saudi-green: #004d35;
+  --color-saudi-gold: #d4af37;
+  --color-saudi-gold-light: #e6c35c;
+  --color-saudi-gold-dark: #b08d26;
+  --color-saudi-green-dark: #003323;
+  --color-saudi-green-light: #006647;
+}
+
+:root {
+  --background: #f8fafc;
+  /* Slate 50 */
+  --foreground: #0f172a;
+  /* Slate 900 */
+}
+
+/* Enforcing Light Mode by overriding dark preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #f8fafc;
+    --foreground: #0f172a;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-ibm-plex-sans-arabic), sans-serif;
+}
