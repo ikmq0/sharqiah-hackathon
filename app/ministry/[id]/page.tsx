@@ -31,7 +31,7 @@ export default function MinistryDetailPage({ params }: { params: { id: string } 
                     <div className="text-3xl font-bold text-green-500">72%</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border border-gray-100">
-                    <div className="text-sm text-gray-500 mb-2">إجمالي البلاغات</div>
+                    <div className="text-sm text-gray-500 mb-2">إجمالي الشكاوى</div>
                     <div className="text-3xl font-bold text-gray-800">12,450</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl border border-gray-100">
@@ -63,7 +63,7 @@ export default function MinistryDetailPage({ params }: { params: { id: string } 
                         <span className="text-xl font-bold text-saudi-gold opacity-75">منصة مدرستي</span>
                     </div>
                     <div className="text-center text-xs text-gray-400 mt-4">
-                        * حجم الخط يمثل تكرار الكلمة في بلاغات الأسبوع الحالي
+                        * حجم الخط يمثل تكرار الكلمة في الشكاوى الأسبوع الحالي
                     </div>
                 </div>
 

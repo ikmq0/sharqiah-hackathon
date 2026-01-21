@@ -1,44 +1,64 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { MinistryLeaderboard } from "./components/MinistryLeaderboard";
-
-// Dynamically import map to avoid SSR issues with Leaflet
-const EasternProvinceMap = dynamic(
-  () => import("./components/EasternProvinceMap").then((mod) => mod.EasternProvinceMap),
-  { ssr: false, loading: () => <div className="w-full h-full bg-gray-100 rounded-2xl animate-pulse flex items-center justify-center text-gray-400">جاري تحميل الخريطة...</div> }
-);
+import { RecurringIssuesChart } from "./components/AIHub/RecurringIssuesChart";
+import { CriticalAlertCard } from "./components/AIHub/CriticalAlertCard";
+import { RealTimeFeed } from "./components/AIHub/RealTimeFeed";
+import { SentimentDistribution } from "./components/AIHub/SentimentDistribution";
+import { BrainCircuit, TrendingUp, Activity, Database } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="mb-8 flex items-end justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-saudi-green mb-2">
-            لوحة المنطقة الشرقية
+          <h1 className="text-3xl font-bold text-saudi-green mb-2 flex items-center gap-3">
+            <BrainCircuit className="w-8 h-8" />
+            مركز الذكاء الاصطناعي
           </h1>
-          <p className="text-gray-500">
-            نظرة شاملة على بلاغات أحياء الدمام والخبر والظهران
-          </p>
+          <p className="text-gray-500">تحليل فوري للبيانات الضخمة للكشف عن الأنماط والمخاطر</p>
         </div>
-        <div className="flex gap-3">
-          <span className="px-4 py-2 bg-white rounded-lg text-sm text-gray-500 border border-gray-100">
-            آخر تحديث: منذ 5 دقائق
-          </span>
+
+        {/* Quick AI Stats */}
+        <div className="flex gap-4">
+          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-100 shadow-sm">
+            <div className="p-2 bg-saudi-green/10 rounded-lg text-saudi-green"><TrendingUp className="w-4 h-4" /></div>
+            <div>
+              <div className="text-xs text-gray-400">تنبؤات اليوم</div>
+              <div className="font-bold text-sm text-gray-800">1,240</div>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-100 shadow-sm">
+            <div className="p-2 bg-saudi-gold/10 rounded-lg text-saudi-gold-dark"><Activity className="w-4 h-4" /></div>
+            <div>
+              <div className="text-xs text-gray-400">سرعة المعالجة</div>
+              <div className="font-bold text-sm text-gray-800">0.4 ثانية</div>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-100 shadow-sm">
+            <div className="p-2 bg-gray-100 rounded-lg text-gray-600"><Database className="w-4 h-4" /></div>
+            <div>
+              <div className="text-xs text-gray-400">مصادر البيانات</div>
+              <div className="font-bold text-sm text-gray-800">18 جهة</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Grid Layout for Map and Sidebar/Leaderboard */}
-      <div className="grid grid-cols-12 gap-6 h-[calc(100vh-180px)]">
-        {/* Map Section (Wide) */}
-        <div className="col-span-12 lg:col-span-8 relative bg-white rounded-2xl border border-gray-100 overflow-hidden">
-          <EasternProvinceMap />
-        </div>
+      {/* Top Row: Critical Alerts & Real Time Feed */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[400px]">
+        {/* Critical Card takes 1 slot */}
+        <CriticalAlertCard />
 
-        {/* Leaderboard / Stats Section (Side) */}
-        <div className="col-span-12 lg:col-span-4 h-full">
-          <MinistryLeaderboard />
-        </div>
+        {/* Real Time Feed takes 1 slot */}
+        <RealTimeFeed />
+
+        {/* Sentiment takes 1 slot */}
+        <SentimentDistribution />
+      </div>
+
+      {/* Middle Row: Recurring Issues Chart */}
+      <div className="grid grid-cols-1 h-[400px]">
+        <RecurringIssuesChart />
       </div>
     </div>
   );

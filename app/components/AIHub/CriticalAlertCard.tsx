@@ -4,7 +4,7 @@ export function CriticalAlertCard() {
     return (
         <div className="bg-red-50 rounded-2xl p-1 border-2 border-red-500/20 h-full relative overflow-hidden group">
             {/* Pulse Animation Background */}
-            <div className="absolute top-0 right-0 p-32 bg-red-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-red-500/10 transition-all duration-700"></div>
+            <div className="absolute top-0 right-0 p-32 bg-red-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-red-600/10 transition-all duration-700"></div>
 
             <div className="relative p-6 h-full flex flex-col">
                 <div className="flex items-start justify-between mb-6">
@@ -32,7 +32,7 @@ export function CriticalAlertCard() {
                             <span>تحليل الذكاء الاصطناعي:</span>
                         </div>
                         <p className="text-gray-700 leading-relaxed text-sm">
-                            على الرغم من ورود <span className="font-bold text-red-600">بلاغ واحد فقط</span>، إلا أن الصور المرفقة وتحليل الكلمات المفتاحية ("تشقق"، "خطر"، "جسر") تشير إلى خطر وشيك يتطلب تدخلاً فورياً. تم تصعيد الحالة للدفاع المدني وأمانة الشرقية.
+                            على الرغم من ورود <span className="font-bold text-red-600">شكوى واحدة فقط</span>، إلا أن الصور المرفقة وتحليل الكلمات المفتاحية ("تشقق"، "خطر"، "جسر") تشير إلى خطر وشيك يتطلب تدخلاً فورياً. تم تصعيد الحالة للدفاع المدني وأمانة الشرقية.
                         </p>
                     </div>
                 </div>

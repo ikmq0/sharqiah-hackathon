@@ -125,7 +125,7 @@ export function EasternProvinceMap() {
 
         layer.bindTooltip(
             `<div class="text-right font-bold">${districtName || 'حي غير معروف'}</div>
-             <div class="text-right text-sm">${complaint ? complaint.count.toLocaleString() + ' بلاغ' : 'لا توجد بيانات'}</div>`,
+             <div class="text-right text-sm">${complaint ? complaint.count.toLocaleString() + ' شكوى' : 'لا توجد بيانات'}</div>`,
             { direction: "top", className: "custom-tooltip" }
         );
     };
@@ -142,7 +142,7 @@ export function EasternProvinceMap() {
         <div className="w-full h-full relative rounded-2xl overflow-hidden">
             {/* Legend */}
             <div className="absolute top-4 right-4 z-[1000] bg-white/95 p-4 rounded-xl shadow-lg border border-gray-100 backdrop-blur-sm">
-                <h4 className="text-sm font-bold text-gray-800 mb-3">مؤشر البلاغات</h4>
+                <h4 className="text-sm font-bold text-gray-800 mb-3">مؤشر الشكاوى</h4>
                 <div className="space-y-2 text-xs">
                     <div className="flex items-center gap-2">
                         <span className="w-4 h-4 rounded bg-red-500"></span>
@@ -165,7 +165,7 @@ export function EasternProvinceMap() {
 
             {/* Stats Overlay */}
             <div className="absolute top-4 left-4 z-[1000] bg-white/95 p-4 rounded-xl shadow-lg border border-gray-100 backdrop-blur-sm">
-                <div className="text-xs text-gray-500">إجمالي البلاغات النشطة</div>
+                <div className="text-xs text-gray-500">إجمالي الشكاوى النشطة</div>
                 <div className="text-2xl font-bold text-saudi-green">
                     {/* Sum of all visible complaints could go here, for now static or derived */}
                     {Object.values(processedData).reduce((a, b) => a + b.count, 0).toLocaleString()}
@@ -178,7 +178,7 @@ export function EasternProvinceMap() {
                 <div className="absolute bottom-4 right-4 z-[1000] bg-white p-4 rounded-xl shadow-lg border border-saudi-green/20">
                     <div className="font-bold text-saudi-green">{selectedDistrict}</div>
                     <div className="text-sm text-gray-600">
-                        {processedData[selectedDistrict].count.toLocaleString()} بلاغ
+                        {processedData[selectedDistrict].count.toLocaleString()} شكوى
                     </div>
                 </div>
             )}

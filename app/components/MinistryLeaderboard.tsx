@@ -36,7 +36,7 @@ export function MinistryLeaderboard() {
                     <thead className="text-xs text-gray-500 font-medium bg-gray-50 rounded-lg">
                         <tr>
                             <th className="pb-3 pt-3 pr-3 rounded-r-lg">الجهة</th>
-                            <th className="pb-3 pt-3">البلاغات</th>
+                            <th className="pb-3 pt-3">الشكاوى</th>
                             <th className="pb-3 pt-3">نسبة الحل</th>
                             <th className="pb-3 pt-3 pl-3 rounded-l-lg">الرضا</th>
                         </tr>

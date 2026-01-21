@@ -52,7 +52,7 @@ export function KSAMap() {
     return (
         <div className="w-full h-full min-h-[500px] relative bg-[#f8fcfb] rounded-2xl overflow-hidden shadow-inner flex items-center justify-center p-8">
             <div className="absolute top-6 right-6 z-10 bg-white/90 p-4 rounded-xl shadow-lg border border-gray-100 backdrop-blur-sm">
-                <h4 className="text-sm font-bold text-gray-800 mb-2">مؤشر البلاغات الحرارية</h4>
+                <h4 className="text-sm font-bold text-gray-800 mb-2">مؤشر الشكاوى الحرارية</h4>
                 <div className="space-y-2 text-xs">
                     <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-red-500"></span> <span>حرج</span></div>
                     <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-orange-500"></span> <span>مرتفع</span></div>
@@ -93,7 +93,7 @@ export function KSAMap() {
                                         >
                                             <div className="text-center">
                                                 <div className="text-saudi-green">{region.name}</div>
-                                                <div className="text-gray-500 font-mono">{region.count} بلاغ</div>
+                                                <div className="text-gray-500 font-mono">{region.count} شكوى</div>
                                             </div>
                                         </div>
                                     </div>

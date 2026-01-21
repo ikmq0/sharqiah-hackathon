@@ -14,7 +14,7 @@ export function RecurringIssuesChart() {
             <div className="flex items-center justify-between mb-8">
                 <div>
                     <h3 className="font-bold text-lg text-saudi-green">الشكاوى الأكثر تكراراً (الضجيج)</h3>
-                    <p className="text-sm text-gray-500">قضايا ذات حجم بلاغات مرتفع جداً</p>
+                    <p className="text-sm text-gray-500">قضايا ذات حجم شكاوى مرتفع جداً</p>
                 </div>
                 <div className="text-sm font-bold text-gray-400 uppercase tracking-wide">High Volume</div>
             </div>
