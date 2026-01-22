@@ -1,3 +1,7 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 import {
     LayoutDashboard,
     Map,
@@ -10,20 +14,33 @@ import Link from "next/link";
 const menuItems = [
     { name: "مركز الذكاء", icon: AlertTriangle, href: "/" },
     { name: "الخريطة التفاعلية", icon: Map, href: "/map" },
-    { name: "أداء الجهات", icon: Building2, href: "/ministries" },
+    { name: "أداء الجهات", icon: Building2, href: "/entities" },
+    { name: "جميع الشكاوى", icon: LayoutDashboard, href: "/complaints" },
 ];
 
 export function Sidebar() {
+    const router = useRouter();
+
+    const handleLogout = () => {
+        localStorage.removeItem('isAuthenticated');
+        router.push('/login');
+    };
+
     return (
-        <aside className="fixed inset-y-0 right-0 z-50 w-64 bg-white border-l border-gray-200 shadow-xl flex flex-col transition-all duration-300">
+        <aside className="fixed inset-y-0 right-0 z-50 w-64 bg-white border-l-2 border-saudi-green/20 shadow-xl flex flex-col transition-all duration-300">
             {/* Brand / Logo Area */}
-            <div className="h-20 flex items-center justify-center border-b border-gray-100">
-                <div className="flex items-center gap-3">
-                    <div className="flex flex-col">
-                        <span className="text-lg font-bold text-saudi-green">منصة رصد</span>
-                        <span className="text-xs text-stone-500">نظام الرقابة الذكي</span>
+            <div className="h-24 flex items-center justify-center border-b-2 border-saudi-green/10 bg-gradient-to-b from-saudi-green/5 to-transparent">
+                <Link href="/" className="flex items-center gap-3">
+                    <div className="relative w-35 h-35">
+                        <Image
+                            src="/homepage-logo.png"
+                            alt="المراقب الذكي"
+                            fill
+                            className="object-contain"
+                        />
                     </div>
-                </div>
+
+                </Link>
             </div>
 
             {/* Navigation */}
@@ -40,10 +57,12 @@ export function Sidebar() {
                 ))}
             </nav>
 
-            {/* Footer / Ministry Logos Placeholder */}
-            <div className="p-4 border-t border-gray-100">
-
-                <button className="mt-6 w-full flex items-center justify-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+            {/* Footer / Logout */}
+            <div className="p-4 border-t-2 border-saudi-green/10">
+                <button
+                    onClick={handleLogout}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors border border-red-200"
+                >
                     <LogOut className="w-4 h-4" />
                     <span>تسجيل الخروج</span>
                 </button>

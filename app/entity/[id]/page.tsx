@@ -11,7 +11,7 @@ export default function MinistryDetailPage({ params }: { params: { id: string } 
         <div className="space-y-8">
             {/* Header */}
             <div className="flex items-center gap-4">
-                <Link href="/ministries" className="p-2 rounded-lg hover:bg-gray-100 text-gray-500">
+                <Link href="/entities" className="p-2 rounded-lg hover:bg-gray-100 text-gray-500">
                     <ArrowRight className="w-5 h-5" />
                 </Link>
                 <div>

@@ -275,7 +275,7 @@ export function MinistriesTable() {
                                 </td>
                                 <td className="px-6 py-4">
                                     <Link
-                                        href={`/ministry/${dept.id}`}
+                                        href={`/entity/${dept.id}`}
                                         className="flex items-center gap-1 text-saudi-green font-bold text-xs hover:underline"
                                     >
                                         <Eye className="w-3 h-3" />

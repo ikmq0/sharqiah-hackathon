@@ -1,0 +1,706 @@
+{
+    "id": "root",
+    "name": "المنطقة الشرقية",
+    "type": "root",
+    "keywords": [],
+    "children": [
+        {
+            "id": "health",
+            "name": "الخدمات الصحية",
+            "type": "root",
+            "keywords": [
+                "صحة",
+                "مستشفى",
+                "طوارئ",
+                "أدوية",
+                "علاج"
+            ],
+            "mainAuthority": "وزارة الصحة / شركة الصحة القابضة",
+            "children": [
+                {
+                    "id": "health-cluster-1",
+                    "name": "التجمع الصحي الأول بالمنطقة الشرقية",
+                    "type": "agency",
+                    "keywords": [
+                        "تجمع",
+                        "دمام",
+                        "خبر",
+                        "قطيف"
+                    ],
+                    "coverage": "الدمام، الخبر، القطيف",
+                    "performance": 72,
+                    "children": []
+                },
+                {
+                    "id": "health-ahsa",
+                    "name": "تجمع الأحساء الصحي",
+                    "type": "agency",
+                    "keywords": [
+                        "أحساء",
+                        "هفوف"
+                    ],
+                    "coverage": "الهفوف والقرى التابعة",
+                    "performance": 68,
+                    "children": []
+                },
+                {
+                    "id": "health-hafr",
+                    "name": "تجمع حفر الباطن الصحي",
+                    "type": "agency",
+                    "keywords": [
+                        "حفر الباطن"
+                    ],
+                    "coverage": "المحافظات الشمالية",
+                    "performance": 75,
+                    "children": []
+                },
+                {
+                    "id": "health-redcrescent",
+                    "name": "هيئة الهلال الأحمر السعودي",
+                    "type": "agency",
+                    "keywords": [
+                        "إسعاف",
+                        "طوارئ",
+                        "هلال"
+                    ],
+                    "coverage": "خدمات الإسعاف والطوارئ الميدانية",
+                    "performance": 88,
+                    "children": []
+                },
+                {
+                    "id": "health-military",
+                    "name": "مستشفيات القطاعات العسكرية",
+                    "type": "agency",
+                    "keywords": [
+                        "عسكري",
+                        "حرس",
+                        "قوات"
+                    ],
+                    "coverage": "الحرس الوطني، قوى الأمن، القوات المسلحة",
+                    "performance": 85,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": "education",
+            "name": "الخدمات التعليمية",
+            "type": "root",
+            "keywords": [
+                "تعليم",
+                "مدرسة",
+                "جامعة",
+                "طلاب"
+            ],
+            "mainAuthority": "وزارة التعليم",
+            "children": [
+                {
+                    "id": "edu-eastern",
+                    "name": "الإدارة العامة للتعليم بالمنطقة الشرقية",
+                    "type": "agency",
+                    "keywords": [
+                        "تعليم",
+                        "دمام",
+                        "خبر"
+                    ],
+                    "coverage": "الدمام والخبر",
+                    "performance": 70,
+                    "children": []
+                },
+                {
+                    "id": "edu-ahsa",
+                    "name": "إدارة التعليم بمحافظة الأحساء",
+                    "type": "agency",
+                    "keywords": [
+                        "أحساء",
+                        "تعليم"
+                    ],
+                    "coverage": "محافظة الأحساء",
+                    "performance": 73,
+                    "children": []
+                },
+                {
+                    "id": "edu-hafr",
+                    "name": "إدارة التعليم بمحافظة حفر الباطن",
+                    "type": "agency",
+                    "keywords": [
+                        "حفر الباطن",
+                        "تعليم"
+                    ],
+                    "coverage": "محافظة حفر الباطن",
+                    "performance": 71,
+                    "children": []
+                },
+                {
+                    "id": "edu-iau",
+                    "name": "جامعة الإمام عبد الرحمن بن فيصل",
+                    "type": "agency",
+                    "keywords": [
+                        "جامعة",
+                        "دمام",
+                        "إمام"
+                    ],
+                    "coverage": "التعليم الجامعي بالدمام",
+                    "performance": 82,
+                    "children": []
+                },
+                {
+                    "id": "edu-kfupm",
+                    "name": "جامعة الملك فهد للبترول والمعادن",
+                    "type": "agency",
+                    "keywords": [
+                        "جامعة",
+                        "بترول",
+                        "ظهران"
+                    ],
+                    "coverage": "التعليم الجامعي بالظهران",
+                    "performance": 92,
+                    "children": []
+                },
+                {
+                    "id": "edu-tvtc",
+                    "name": "المؤسسة العامة للتدريب التقني والمهني",
+                    "type": "agency",
+                    "keywords": [
+                        "تدريب",
+                        "تقني",
+                        "مهني",
+                        "كلية"
+                    ],
+                    "coverage": "الكليات التقنية والمعاهد",
+                    "performance": 65,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": "municipal",
+            "name": "الخدمات البلدية",
+            "type": "root",
+            "keywords": [
+                "بلدية",
+                "نظافة",
+                "رخصة",
+                "بناء"
+            ],
+            "mainAuthority": "أمانة المنطقة الشرقية",
+            "children": [
+                {
+                    "id": "muni-services",
+                    "name": "وكالة الخدمات",
+                    "type": "agency",
+                    "keywords": [
+                        "نظافة",
+                        "صحة",
+                        "أسواق"
+                    ],
+                    "coverage": "النظافة، صحة البيئة، الأسواق",
+                    "performance": 58,
+                    "children": []
+                },
+                {
+                    "id": "muni-construction",
+                    "name": "وكالة التعمير والمشاريع",
+                    "type": "agency",
+                    "keywords": [
+                        "رخص",
+                        "بناء",
+                        "تخطيط"
+                    ],
+                    "coverage": "الرخص الإنشائية، التخطيط العمراني",
+                    "performance": 62,
+                    "children": []
+                },
+                {
+                    "id": "muni-parks",
+                    "name": "الإدارة العامة للحدائق وعمارة البيئة",
+                    "type": "agency",
+                    "keywords": [
+                        "حدائق",
+                        "تشجير",
+                        "منتزهات"
+                    ],
+                    "coverage": "التشجير والمنتزهات",
+                    "performance": 75,
+                    "children": []
+                },
+                {
+                    "id": "muni-ahsa",
+                    "name": "أمانة محافظة الأحساء",
+                    "type": "agency",
+                    "keywords": [
+                        "أحساء",
+                        "بلدية"
+                    ],
+                    "coverage": "كيان مستقل إدارياً في الخدمات البلدية",
+                    "performance": 70,
+                    "children": []
+                },
+                {
+                    "id": "muni-hafr",
+                    "name": "بلدية محافظة حفر الباطن",
+                    "type": "agency",
+                    "keywords": [
+                        "حفر الباطن",
+                        "بلدية"
+                    ],
+                    "coverage": "محافظة حفر الباطن",
+                    "performance": 68,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": "civildefense",
+            "name": "خدمات الدفاع المدني",
+            "type": "root",
+            "keywords": [
+                "دفاع مدني",
+                "حريق",
+                "إنقاذ",
+                "سلامة"
+            ],
+            "mainAuthority": "المديرية العامة للدفاع المدني",
+            "children": [
+                {
+                    "id": "cd-dammam",
+                    "name": "إدارة الدفاع المدني بالدمام",
+                    "type": "agency",
+                    "keywords": [
+                        "دمام",
+                        "حريق"
+                    ],
+                    "coverage": "مدينة الدمام",
+                    "performance": 90,
+                    "children": []
+                },
+                {
+                    "id": "cd-khobar",
+                    "name": "إدارة الدفاع المدني بالخبر",
+                    "type": "agency",
+                    "keywords": [
+                        "خبر",
+                        "حريق"
+                    ],
+                    "coverage": "مدينة الخبر",
+                    "performance": 88,
+                    "children": []
+                },
+                {
+                    "id": "cd-ahsa",
+                    "name": "إدارة الدفاع المدني بالأحساء",
+                    "type": "agency",
+                    "keywords": [
+                        "أحساء",
+                        "حريق"
+                    ],
+                    "coverage": "محافظة الأحساء",
+                    "performance": 85,
+                    "children": []
+                },
+                {
+                    "id": "cd-safety",
+                    "name": "إدارة السلامة الوقائية",
+                    "type": "agency",
+                    "keywords": [
+                        "سلامة",
+                        "تراخيص",
+                        "منشآت"
+                    ],
+                    "coverage": "تراخيص السلامة للمنشآت",
+                    "performance": 78,
+                    "children": []
+                },
+                {
+                    "id": "cd-protection",
+                    "name": "إدارة الحماية المدنية",
+                    "type": "agency",
+                    "keywords": [
+                        "حماية",
+                        "طوارئ",
+                        "كوارث"
+                    ],
+                    "coverage": "خطط الطوارئ والكوارث",
+                    "performance": 82,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": "security",
+            "name": "الخدمات الأمنية",
+            "type": "root",
+            "keywords": [
+                "أمن",
+                "شرطة",
+                "بلاغ"
+            ],
+            "mainAuthority": "الأمن العام / وزارة الداخلية",
+            "children": [
+                {
+                    "id": "sec-police",
+                    "name": "شرطة المنطقة الشرقية",
+                    "type": "agency",
+                    "keywords": [
+                        "شرطة",
+                        "جنائي",
+                        "ضبط"
+                    ],
+                    "coverage": "المراكز الجنائية والضبط الإداري",
+                    "performance": 85,
+                    "children": []
+                },
+                {
+                    "id": "sec-highway",
+                    "name": "القوات الخاصة لأمن الطرق",
+                    "type": "agency",
+                    "keywords": [
+                        "طرق",
+                        "سريعة"
+                    ],
+                    "coverage": "أمن الطرق السريعة بين المدن",
+                    "performance": 88,
+                    "children": []
+                },
+                {
+                    "id": "sec-patrol",
+                    "name": "إدارة الدوريات الأمنية",
+                    "type": "agency",
+                    "keywords": [
+                        "دوريات",
+                        "أحياء"
+                    ],
+                    "coverage": "الفرق الميدانية داخل الأحياء",
+                    "performance": 80,
+                    "children": []
+                },
+                {
+                    "id": "sec-drugs",
+                    "name": "مكافحة المخدرات بالمنطقة الشرقية",
+                    "type": "agency",
+                    "keywords": [
+                        "مخدرات",
+                        "مكافحة"
+                    ],
+                    "coverage": "مكافحة المخدرات",
+                    "performance": 92,
+                    "children": []
+                },
+                {
+                    "id": "sec-investigations",
+                    "name": "المباحث العامة",
+                    "type": "agency",
+                    "keywords": [
+                        "مباحث",
+                        "معلومات"
+                    ],
+                    "coverage": "الخدمات الأمنية والمعلوماتية",
+                    "performance": 90,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": "traffic",
+            "name": "الخدمات المرورية",
+            "type": "root",
+            "keywords": [
+                "مرور",
+                "رخصة",
+                "حادث",
+                "مخالفة"
+            ],
+            "mainAuthority": "الإدارة العامة للمرور",
+            "children": [
+                {
+                    "id": "traffic-main",
+                    "name": "مرور المنطقة الشرقية",
+                    "type": "agency",
+                    "keywords": [
+                        "مرور",
+                        "إدارة"
+                    ],
+                    "coverage": "الإدارة الرئيسية",
+                    "performance": 72,
+                    "children": []
+                },
+                {
+                    "id": "traffic-license",
+                    "name": "شعبة الرخص",
+                    "type": "agency",
+                    "keywords": [
+                        "رخص",
+                        "قيادة",
+                        "سير"
+                    ],
+                    "coverage": "رخص القيادة والسير",
+                    "performance": 65,
+                    "children": []
+                },
+                {
+                    "id": "traffic-accidents",
+                    "name": "شعبة الحوادث",
+                    "type": "agency",
+                    "keywords": [
+                        "حوادث",
+                        "تحقيق"
+                    ],
+                    "coverage": "مباشرة الحوادث والتحقيق المروري",
+                    "performance": 78,
+                    "children": []
+                },
+                {
+                    "id": "traffic-flow",
+                    "name": "شعبة السير",
+                    "type": "agency",
+                    "keywords": [
+                        "سير",
+                        "حركة",
+                        "دراجات"
+                    ],
+                    "coverage": "تنظيم الحركة الميدانية والدراجات النارية",
+                    "performance": 70,
+                    "children": []
+                },
+                {
+                    "id": "traffic-authority",
+                    "name": "الهيئة المرورية",
+                    "type": "agency",
+                    "keywords": [
+                        "مخالفات",
+                        "اعتراضات"
+                    ],
+                    "coverage": "الفصل في المخالفات والاعتراضات",
+                    "performance": 60,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": "borders",
+            "name": "خدمات المنافذ الحدودية",
+            "type": "root",
+            "keywords": [
+                "جمارك",
+                "منفذ",
+                "جوازات"
+            ],
+            "mainAuthority": "هيئة الزكاة والضريبة والجمارك + الجوازات",
+            "children": [
+                {
+                    "id": "border-bahrain",
+                    "name": "جمارك جسر الملك فهد",
+                    "type": "agency",
+                    "keywords": [
+                        "جسر",
+                        "بحرين"
+                    ],
+                    "coverage": "المنفذ مع البحرين",
+                    "performance": 75,
+                    "children": []
+                },
+                {
+                    "id": "border-khafji",
+                    "name": "جمارك منفذ الخفجي",
+                    "type": "agency",
+                    "keywords": [
+                        "خفجي",
+                        "كويت"
+                    ],
+                    "coverage": "المنفذ مع الكويت",
+                    "performance": 80,
+                    "children": []
+                },
+                {
+                    "id": "border-batha",
+                    "name": "جمارك منفذ البطحاء",
+                    "type": "agency",
+                    "keywords": [
+                        "بطحاء",
+                        "إمارات"
+                    ],
+                    "coverage": "المنفذ مع الإمارات",
+                    "performance": 72,
+                    "children": []
+                },
+                {
+                    "id": "border-salwa",
+                    "name": "جمارك منفذ سلوى",
+                    "type": "agency",
+                    "keywords": [
+                        "سلوى",
+                        "قطر"
+                    ],
+                    "coverage": "المنفذ مع قطر",
+                    "performance": 78,
+                    "children": []
+                },
+                {
+                    "id": "border-airport",
+                    "name": "جمارك مطار الملك فهد الدولي",
+                    "type": "agency",
+                    "keywords": [
+                        "مطار",
+                        "جوي"
+                    ],
+                    "coverage": "الشحن الجوي والركاب",
+                    "performance": 85,
+                    "children": []
+                },
+                {
+                    "id": "border-port",
+                    "name": "جمارك ميناء الملك عبد العزيز",
+                    "type": "agency",
+                    "keywords": [
+                        "ميناء",
+                        "بحري"
+                    ],
+                    "coverage": "الفسح التجاري البحري",
+                    "performance": 70,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": "roads",
+            "name": "خدمات الطرق",
+            "type": "root",
+            "keywords": [
+                "طرق",
+                "صيانة",
+                "إسفلت",
+                "جسور"
+            ],
+            "mainAuthority": "الهيئة العامة للطرق / فرع وزارة النقل",
+            "children": [
+                {
+                    "id": "roads-maintenance",
+                    "name": "إدارة الصيانة والتشغيل",
+                    "type": "agency",
+                    "keywords": [
+                        "صيانة",
+                        "إسفلت",
+                        "لوحات"
+                    ],
+                    "coverage": "صيانة الطبقة الإسفلتية واللوحات",
+                    "performance": 55,
+                    "children": []
+                },
+                {
+                    "id": "roads-projects",
+                    "name": "إدارة المشاريع",
+                    "type": "agency",
+                    "keywords": [
+                        "مشاريع",
+                        "طرق جديدة"
+                    ],
+                    "coverage": "تنفيذ الطرق الجديدة والوصلات",
+                    "performance": 68,
+                    "children": []
+                },
+                {
+                    "id": "roads-safety",
+                    "name": "إدارة السلامة على الطرق",
+                    "type": "agency",
+                    "keywords": [
+                        "سلامة",
+                        "حواجز",
+                        "سياج"
+                    ],
+                    "coverage": "الحواجز الخرسانية والسياج",
+                    "performance": 62,
+                    "children": []
+                },
+                {
+                    "id": "roads-bridges",
+                    "name": "المؤسسة العامة للجسور",
+                    "type": "agency",
+                    "keywords": [
+                        "جسور",
+                        "أنفاق"
+                    ],
+                    "coverage": "صيانة الجسور والأنفاق التابعة للنقل",
+                    "performance": 70,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "id": "water",
+            "name": "خدمات المياه",
+            "type": "root",
+            "keywords": [
+                "مياه",
+                "صرف",
+                "عداد",
+                "فاتورة"
+            ],
+            "mainAuthority": "شركة المياه الوطنية (القطاع الشرقي)",
+            "children": [
+                {
+                    "id": "water-customers",
+                    "name": "إدارة خدمات العملاء",
+                    "type": "agency",
+                    "keywords": [
+                        "عدادات",
+                        "فواتير",
+                        "شكاوى"
+                    ],
+                    "coverage": "العدادات، الفواتير، الشكاوى",
+                    "performance": 58,
+                    "children": []
+                },
+                {
+                    "id": "water-operations",
+                    "name": "إدارة التشغيل والصيانة",
+                    "type": "agency",
+                    "keywords": [
+                        "شبكات",
+                        "انقطاعات"
+                    ],
+                    "coverage": "شبكات المياه، الانقطاعات",
+                    "performance": 52,
+                    "children": []
+                },
+                {
+                    "id": "water-sewage",
+                    "name": "إدارة الصرف الصحي",
+                    "type": "agency",
+                    "keywords": [
+                        "صرف",
+                        "محطات",
+                        "صهاريج"
+                    ],
+                    "coverage": "الشبكات، المحطات، صهاريج الصرف",
+                    "performance": 60,
+                    "children": []
+                },
+                {
+                    "id": "water-desalination",
+                    "name": "المؤسسة العامة لتحلية المياه المالحة",
+                    "type": "agency",
+                    "keywords": [
+                        "تحلية",
+                        "إنتاج"
+                    ],
+                    "coverage": "الإنتاج وضخ المياه المحلاة",
+                    "performance": 85,
+                    "children": []
+                },
+                {
+                    "id": "water-projects",
+                    "name": "إدارة مشاريع المياه",
+                    "type": "agency",
+                    "keywords": [
+                        "مشاريع",
+                        "توصيل",
+                        "أحياء"
+                    ],
+                    "coverage": "توصيل الشبكات للأحياء الجديدة",
+                    "performance": 65,
+                    "children": []
+                }
+            ]
+        }
+    ]
+}

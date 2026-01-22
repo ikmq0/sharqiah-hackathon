@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-import L from "leaflet";
 
 // Dynamically import map to avoid SSR issues with Leaflet
 const MapContainer = dynamic(
@@ -44,13 +44,18 @@ type GeoJSONData = {
 };
 
 export function EasternProvinceMap() {
+    const router = useRouter();
     const [geoData, setGeoData] = useState<GeoJSONData | null>(null);
     const [processedData, setProcessedData] = useState<Record<string, { count: number; intensity: string }>>(initialDistrictComplaints);
     const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
     const [isClient, setIsClient] = useState(false);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [leafletModule, setLeafletModule] = useState<any>(null);
 
     useEffect(() => {
         setIsClient(true);
+        // Dynamically import Leaflet for client-side use
+        import("leaflet").then((L) => setLeafletModule(L));
         // Load GeoJSON data
         fetch("/eastern_districts.json")
             .then((res) => res.json())
@@ -98,7 +103,16 @@ export function EasternProvinceMap() {
         }
     };
 
-    const styleFeature = (feature: GeoJSONFeature) => {
+    const styleFeature = (feature: GeoJSONFeature | undefined) => {
+        if (!feature) {
+            return {
+                fillColor: "#94a3b8",
+                weight: 1,
+                opacity: 1,
+                color: "#fff",
+                fillOpacity: 0.7,
+            };
+        }
         const districtName = (feature.properties?.name_ar || feature.properties?.NAME_AR || feature.properties?.Name_AR) as string;
         const complaint = processedData[districtName];
 
@@ -119,7 +133,10 @@ export function EasternProvinceMap() {
             mouseover: () => setSelectedDistrict(districtName || "حي غير معروف"),
             mouseout: () => setSelectedDistrict(null),
             click: () => {
-                // Could open detail panel
+                // Navigate to complaints page with district filter
+                if (districtName) {
+                    router.push(`/complaints?district=${encodeURIComponent(districtName)}`);
+                }
             },
         });
 
@@ -196,12 +213,12 @@ export function EasternProvinceMap() {
                     />
                     <GeoJSON
                         data={geoData as GeoJSON.GeoJsonObject}
-                        style={styleFeature as L.StyleFunction}
+                        style={styleFeature}
                         onEachFeature={onEachFeature}
-                        pointToLayer={(feature, latlng) => {
+                        pointToLayer={leafletModule ? (feature, latlng) => {
                             // Custom marker for rural points
                             const isRural = feature.properties?.type === "Rural";
-                            return L.circleMarker(latlng, {
+                            return leafletModule.circleMarker(latlng, {
                                 radius: isRural ? 4 : 6,
                                 fillColor: isRural ? "#d4af37" : "#004d35", // Gold for rural, Green for cities
                                 color: "#fff",
@@ -209,7 +226,7 @@ export function EasternProvinceMap() {
                                 opacity: 1,
                                 fillOpacity: 0.8
                             });
-                        }}
+                        } : undefined}
                     />
                 </MapContainer>
             ) : (

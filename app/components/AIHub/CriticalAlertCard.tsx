@@ -18,7 +18,7 @@ export function CriticalAlertCard() {
                         </div>
                     </div>
                     <div className="px-3 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full border border-red-200">
-                        High Risk Signal
+                        إشارة خطر عالية
                     </div>
                 </div>
 
