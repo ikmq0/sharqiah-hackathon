@@ -4,12 +4,12 @@ import { EasternProvinceMap } from "../components/EasternProvinceMap";
 
 export default function MapPage() {
     return (
-        <div className="h-[calc(100vh-140px)] flex flex-col">
-            <div className="mb-6">
-                <h1 className="text-3xl font-bold text-saudi-green mb-2">
+        <div className="h-[calc(100vh-80px)] md:h-[calc(100vh-140px)] flex flex-col">
+            <div className="mb-4 md:mb-6">
+                <h1 className="text-xl md:text-3xl font-bold text-saudi-green mb-1 md:mb-2">
                     خريطة المنطقة الشرقية
                 </h1>
-                <p className="text-gray-500">
+                <p className="text-xs md:text-base text-gray-500">
                     توزيع الشكاوى حسب الأحياء (الدمام، الخبر، الظهران)
                 </p>
             </div>

@@ -5,7 +5,7 @@ import { CriticalAlertCard } from "./components/AIHub/CriticalAlertCard";
 import { RealTimeFeed } from "./components/AIHub/RealTimeFeed";
 import { EmergingPatterns } from "./components/AIHub/EmergingPatterns";
 import { AIRecommendations } from "./components/AIHub/AIRecommendations";
-import { BrainCircuit, TrendingUp, Activity, Database } from "lucide-react";
+import { BrainCircuit } from "lucide-react";
 
 export default function Home() {
   return (
@@ -23,28 +23,28 @@ export default function Home() {
       {/* Top Row: Critical Alert (Wide) + Emerging Patterns */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Critical Card takes 2 slots */}
-        <div className="lg:col-span-2 h-[380px]">
+        <div className="lg:col-span-2 min-h-[380px] h-auto flex flex-col">
           <CriticalAlertCard />
         </div>
 
         {/* Emerging Patterns takes 1 slot */}
-        <div className="h-[380px]">
+        <div className="min-h-[380px] h-auto flex flex-col">
           <EmergingPatterns />
         </div>
       </div>
 
       {/* Middle Row: AI Recommendations + Real Time Feed */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="h-[400px]">
+        <div className="min-h-[400px] h-auto flex flex-col">
           <AIRecommendations />
         </div>
-        <div className="h-[400px]">
+        <div className="min-h-[400px] h-auto flex flex-col">
           <RealTimeFeed />
         </div>
       </div>
 
       {/* Bottom Row: Recurring Issues Chart */}
-      <div className="grid grid-cols-1 h-[350px]">
+      <div className="grid grid-cols-1 min-h-[350px] h-auto flex flex-col">
         <RecurringIssuesChart />
       </div>
     </div>

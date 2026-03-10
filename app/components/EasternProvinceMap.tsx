@@ -158,31 +158,35 @@ export function EasternProvinceMap() {
     return (
         <div className="w-full h-full relative rounded-2xl overflow-hidden">
             {/* Legend */}
-            <div className="absolute top-4 right-4 z-[1000] bg-white/95 p-4 rounded-xl shadow-lg border border-gray-100 backdrop-blur-sm">
-                <h4 className="text-sm font-bold text-gray-800 mb-3">مؤشر الشكاوى</h4>
+            <div className="absolute top-4 right-4 z-[30] bg-white/95 p-3 md:p-4 rounded-xl shadow-lg border border-gray-100 backdrop-blur-sm">
+                <h4 className="text-xs md:text-sm font-bold text-gray-800 mb-2 md:mb-3">مؤشر الشكاوى</h4>
                 <div className="space-y-2 text-xs">
                     <div className="flex items-center gap-2">
-                        <span className="w-4 h-4 rounded bg-red-500"></span>
-                        <span>حرج ({'>'}2000)</span>
+                        <span className="w-3 h-3 md:w-4 md:h-4 rounded bg-red-500 shrink-0"></span>
+                        <span className="hidden sm:inline">حرج ({'>'}2000)</span>
+                        <span className="sm:hidden">{'>'}2k</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="w-4 h-4 rounded bg-orange-500"></span>
-                        <span>مرتفع (1000-2000)</span>
+                        <span className="w-3 h-3 md:w-4 md:h-4 rounded bg-orange-600 shrink-0"></span>
+                        <span className="hidden sm:inline">مرتفع (1000-2000)</span>
+                        <span className="sm:hidden">1k-2k</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="w-4 h-4 rounded bg-yellow-500"></span>
-                        <span>متوسط (500-1000)</span>
+                        <span className="w-3 h-3 md:w-4 md:h-4 rounded bg-amber-500 shrink-0"></span>
+                        <span className="hidden sm:inline">متوسط (500-1000)</span>
+                        <span className="sm:hidden">500-1k</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="w-4 h-4 rounded bg-saudi-green"></span>
-                        <span>طبيعي ({'<'}500)</span>
+                        <span className="w-3 h-3 md:w-4 md:h-4 rounded bg-saudi-green shrink-0"></span>
+                        <span className="hidden sm:inline">طبيعي ({'<'}500)</span>
+                        <span className="sm:hidden">{'<'}500</span>
                     </div>
                 </div>
             </div>
 
             {/* Stats Overlay */}
-            <div className="absolute top-4 left-4 z-[1000] bg-white/95 p-4 rounded-xl shadow-lg border border-gray-100 backdrop-blur-sm">
-                <div className="text-xs text-gray-500">إجمالي الشكاوى النشطة</div>
+            <div className="absolute top-4 left-4 z-[30] bg-white/95 p-3 md:p-4 rounded-xl shadow-lg border border-gray-100 backdrop-blur-sm">
+                <div className="text-[10px] md:text-xs text-gray-500">إجمالي الشكاوى النشطة</div>
                 <div className="text-2xl font-bold text-saudi-green">
                     {/* Sum of all visible complaints could go here, for now static or derived */}
                     {Object.values(processedData).reduce((a, b) => a + b.count, 0).toLocaleString()}
@@ -192,7 +196,7 @@ export function EasternProvinceMap() {
 
             {/* Selected District Info */}
             {selectedDistrict && processedData[selectedDistrict] && (
-                <div className="absolute bottom-4 right-4 z-[1000] bg-white p-4 rounded-xl shadow-lg border border-saudi-green/20">
+                <div className="absolute bottom-4 right-4 z-[30] bg-white p-3 md:p-4 rounded-xl shadow-lg border border-saudi-green/20">
                     <div className="font-bold text-saudi-green">{selectedDistrict}</div>
                     <div className="text-sm text-gray-600">
                         {processedData[selectedDistrict].count.toLocaleString()} شكوى

@@ -59,9 +59,9 @@ export function ServiceTree() {
     };
 
     const getPerformanceColor = (perf: number) => {
-        if (perf >= 80) return 'text-green-600 bg-green-50';
-        if (perf >= 60) return 'text-yellow-600 bg-yellow-50';
-        return 'text-red-600 bg-red-50';
+        if (perf >= 80) return 'text-saudi-green bg-saudi-green/10 border border-saudi-green/20';
+        if (perf >= 60) return 'text-amber-700 bg-amber-50 border border-amber-200';
+        return 'text-red-600 bg-red-50 border border-red-200';
     };
 
     const getPerformanceIcon = (perf: number) => {
@@ -115,7 +115,7 @@ export function ServiceTree() {
 
             {/* Grid of Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {displayedNodes?.map((node) => {
+                {displayedNodes?.map((node, index) => {
                     const Icon = IconComponent(node.name);
                     const avgPerf = getAveragePerformance(node);
                     const PerfIcon = getPerformanceIcon(avgPerf);
@@ -124,7 +124,8 @@ export function ServiceTree() {
                         <div
                             key={node.id}
                             onClick={() => handleNodeClick(node)}
-                            className="group relative bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md hover:border-saudi-green/50 transition-all cursor-pointer overflow-hidden"
+                            className="group relative bg-white rounded-2xl p-5 border border-gray-100 shadow-sm cursor-pointer overflow-hidden card-hover animate-fade-in-up"
+                            style={{ animationDelay: `${index * 80}ms` }}
                         >
                             <div className="absolute top-0 right-0 w-24 h-24 bg-saudi-green/5 rounded-bl-full -mr-4 -ml-4 transition-transform group-hover:scale-110" />
 
@@ -168,8 +169,8 @@ export function ServiceTree() {
                                         <div className="flex-1 mx-3">
                                             <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
                                                 <div
-                                                    className={`h-full rounded-full ${avgPerf >= 80 ? 'bg-green-500' : avgPerf >= 60 ? 'bg-yellow-500' : 'bg-red-500'}`}
-                                                    style={{ width: `${avgPerf}%` }}
+                                                    className={`h-full rounded-full animate-grow-width ${avgPerf >= 80 ? 'bg-saudi-green' : avgPerf >= 60 ? 'bg-amber-500' : 'bg-red-500'}`}
+                                                    style={{ width: `${avgPerf}%`, animationDelay: `${(index ?? 0) * 80 + 200}ms` }}
                                                 />
                                             </div>
                                         </div>

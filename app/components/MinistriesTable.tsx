@@ -110,8 +110,8 @@ export function MinistriesTable() {
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden font-sans">
             {/* Main Controls */}
             <div className="p-4 border-b border-gray-100 bg-gray-50/50 space-y-4">
-                <div className="flex flex-wrap gap-4">
-                    <div className="relative flex-1 min-w-[200px]">
+                <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+                    <div className="relative w-full sm:flex-1 sm:min-w-[200px]">
                         <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                         <input
                             type="text"
@@ -122,26 +122,29 @@ export function MinistriesTable() {
                         />
                     </div>
 
-                    <select
-                        value={selectedCity}
-                        onChange={(e) => setSelectedCity(e.target.value)}
-                        className="h-10 px-4 rounded-lg border border-gray-200 bg-white focus:ring-2 focus:ring-saudi-green outline-none text-sm text-gray-600 cursor-pointer"
-                    >
-                        <option value="all">جميع المدن</option>
-                        {cities.filter(c => c !== 'all').map(city => (
-                            <option key={city} value={city}>{city}</option>
-                        ))}
-                    </select>
+                    <div className="flex gap-2 w-full sm:w-auto">
+                        <select
+                            value={selectedCity}
+                            onChange={(e) => setSelectedCity(e.target.value)}
+                            className="flex-1 sm:flex-none h-10 px-4 rounded-lg border border-gray-200 bg-white focus:ring-2 focus:ring-saudi-green outline-none text-sm text-gray-600 cursor-pointer"
+                        >
+                            <option value="all">جميع المدن</option>
+                            {cities.filter(c => c !== 'all').map(city => (
+                                <option key={city} value={city}>{city}</option>
+                            ))}
+                        </select>
 
-                    <button
-                        onClick={() => setShowAdvanced(!showAdvanced)}
-                        className={`h-10 px-4 rounded-lg border flex items-center gap-2 text-sm font-medium transition-colors
-                            ${showAdvanced ? 'border-saudi-green bg-green-50 text-saudi-green' : 'border-gray-200 bg-white hover:bg-gray-50 text-gray-600'}`}
-                    >
-                        <Filter className="w-4 h-4" />
-                        <span>تصفية متقدمة</span>
-                        {showAdvanced ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-                    </button>
+                        <button
+                            onClick={() => setShowAdvanced(!showAdvanced)}
+                            className={`flex-1 sm:flex-none h-10 px-4 rounded-lg border flex items-center justify-center gap-2 text-sm font-medium transition-colors
+                                ${showAdvanced ? 'border-saudi-green bg-saudi-green/10 text-saudi-green' : 'border-gray-200 bg-white hover:bg-gray-50 text-gray-600'}`}
+                        >
+                            <Filter className="w-4 h-4" />
+                            <span className="hidden sm:inline">تصفية متقدمة</span>
+                            <span className="sm:hidden">تصفية</span>
+                            {showAdvanced ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                        </button>
+                    </div>
                 </div>
 
                 {/* Advanced Filters Panel */}
@@ -239,7 +242,7 @@ export function MinistriesTable() {
                     </thead>
                     <tbody className="divide-y divide-gray-100">
                         {filteredAndSortedDepartments.map((dept) => (
-                            <tr key={dept.id} className="group hover:bg-green-50/30 transition-colors">
+                            <tr key={dept.id} className="group hover:bg-saudi-green/5 transition-colors row-accent hover:border-r-saudi-green/50">
                                 <td className="px-6 py-4 font-bold text-gray-800">
                                     <div>{dept.name}</div>
                                     <div className="text-[10px] text-gray-400 font-normal">{dept.district}</div>
@@ -251,9 +254,9 @@ export function MinistriesTable() {
                                 </td>
                                 <td className="px-6 py-4 font-mono text-gray-600">{dept.complaints.toLocaleString()}</td>
                                 <td className="px-6 py-4">
-                                    <span className={`px-2 py-1 rounded-full text-xs font-bold ${dept.resolvedPercentage >= 80 ? 'bg-green-100 text-green-700' :
-                                        dept.resolvedPercentage >= 60 ? 'bg-yellow-100 text-yellow-700' :
-                                            'bg-red-100 text-red-700'
+                                    <span className={`px-2 py-1 rounded-full text-xs font-bold ${dept.resolvedPercentage >= 80 ? 'bg-saudi-green/10 text-saudi-green' :
+                                        dept.resolvedPercentage >= 60 ? 'bg-amber-50 text-amber-700' :
+                                            'bg-red-50 text-red-700 border border-red-100'
                                         }`}>
                                         {dept.resolvedPercentage}%
                                     </span>
@@ -263,8 +266,8 @@ export function MinistriesTable() {
                                     <div className="flex items-center gap-2">
                                         <div className="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden">
                                             <div
-                                                className={`h-full rounded-full ${dept.sentimentScore > 75 ? 'bg-green-500' :
-                                                    dept.sentimentScore > 50 ? 'bg-yellow-500' :
+                                                className={`h-full rounded-full animate-grow-width ${dept.sentimentScore > 75 ? 'bg-saudi-green' :
+                                                    dept.sentimentScore > 50 ? 'bg-amber-500' :
                                                         'bg-red-500'
                                                     }`}
                                                 style={{ width: `${dept.sentimentScore}%` }}

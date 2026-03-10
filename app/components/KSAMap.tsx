@@ -42,8 +42,8 @@ export function KSAMap() {
     const getIntensityColor = (intensity: string) => {
         switch (intensity) {
             case 'critical': return '#ef4444'; // red-500
-            case 'high': return '#f97316'; // orange-500
-            case 'medium': return '#eab308'; // yellow-500
+            case 'high': return '#ea580c'; // orange-600
+            case 'medium': return '#f59e0b'; // amber-500
             case 'low': return '#004d35'; // saudi-green
             default: return '#e5e7eb'; // gray-200
         }
@@ -55,8 +55,8 @@ export function KSAMap() {
                 <h4 className="text-sm font-bold text-gray-800 mb-2">مؤشر الشكاوى الحرارية</h4>
                 <div className="space-y-2 text-xs">
                     <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-red-500"></span> <span>حرج</span></div>
-                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-orange-500"></span> <span>مرتفع</span></div>
-                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-yellow-500"></span> <span>متوسط</span></div>
+                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-orange-600"></span> <span>مرتفع</span></div>
+                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-amber-500"></span> <span>متوسط</span></div>
                     <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-saudi-green"></span> <span>طبيعي</span></div>
                 </div>
             </div>

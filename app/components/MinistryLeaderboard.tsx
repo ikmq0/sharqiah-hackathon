@@ -63,14 +63,14 @@ export function MinistryLeaderboard() {
                                 </td>
                                 <td className="py-4 pl-3">
                                     <div className="flex items-center gap-2">
-                                        <span className={`text-xs font-bold font-mono ${dept.sentiment > 70 ? 'text-green-600' :
-                                            dept.sentiment > 50 ? 'text-yellow-600' : 'text-red-500'
+                                        <span className={`text-xs font-bold font-mono ${dept.sentiment > 70 ? 'text-saudi-green' :
+                                            dept.sentiment > 50 ? 'text-amber-500' : 'text-red-500'
                                             }`}>
                                             {dept.sentiment}/100
                                         </span>
-                                        {dept.trend === 'up' && <ArrowUp className="w-3 h-3 text-green-500" />}
+                                        {dept.trend === 'up' && <ArrowUp className="w-3 h-3 text-saudi-green" />}
                                         {dept.trend === 'down' && <ArrowDown className="w-3 h-3 text-red-500" />}
-                                        {dept.trend === 'stable' && <Minus className="w-3 h-3 text-gray-400" />}
+                                        {dept.trend === 'stable' && <Minus className="w-3 h-3 text-blue-400" />}
                                     </div>
                                 </td>
                             </tr>

@@ -11,7 +11,7 @@ export function SentimentDistribution() {
                     style={{
                         background: `conic-gradient(
                             var(--color-saudi-green) 0% 65%, 
-                            var(--color-saudi-gold) 65% 85%, 
+                            #f59e0b 65% 85%, 
                             #ef4444 85% 100%
                         )`
                     }}
@@ -34,7 +34,7 @@ export function SentimentDistribution() {
                 </div>
                 <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2">
-                        <span className="w-3 h-3 rounded-full bg-saudi-gold"></span>
+                        <span className="w-3 h-3 rounded-full bg-amber-500"></span>
                         <span className="text-gray-600">محايد</span>
                     </div>
                     <span className="font-bold text-gray-800">20%</span>

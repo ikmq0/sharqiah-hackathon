@@ -114,19 +114,19 @@ export function ComplaintsTable() {
 
     const getPriorityColor = (p: string) => {
         switch (p) {
-            case 'critical': return 'bg-red-100 text-red-700 border-red-200';
-            case 'high': return 'bg-orange-100 text-orange-700 border-orange-200';
-            case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-200';
-            default: return 'bg-blue-100 text-blue-700 border-blue-200';
+            case 'critical': return 'bg-red-50 text-red-700 border border-red-200';
+            case 'high': return 'bg-amber-50 text-amber-700 border border-amber-200';
+            case 'medium': return 'bg-blue-50 text-blue-700 border border-blue-200';
+            default: return 'bg-slate-50 text-slate-600 border border-slate-200';
         }
     };
 
     const getStatusColor = (s: string) => {
         switch (s) {
-            case 'resolved': return 'text-green-600 bg-green-50';
-            case 'in-progress': return 'text-blue-600 bg-blue-50';
-            case 'escalated': return 'text-purple-600 bg-purple-50';
-            default: return 'text-gray-600 bg-gray-50';
+            case 'resolved': return 'bg-saudi-green/10 text-saudi-green border border-saudi-green/20';
+            case 'in-progress': return 'bg-blue-50 text-blue-700 border border-blue-200';
+            case 'escalated': return 'bg-rose-50 text-rose-700 border border-rose-200';
+            default: return 'bg-slate-50 text-slate-600 border border-slate-200';
         }
     };
 
@@ -155,7 +155,7 @@ export function ComplaintsTable() {
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden min-h-[600px] flex flex-col">
 
             {/* Top Toolbar */}
-            <div className="p-4 border-b border-gray-100 bg-white flex flex-col md:flex-row gap-4 justify-between items-center sticky top-0 z-20">
+            <div className="p-4 border-b border-gray-100 bg-white/80 backdrop-blur-md flex flex-col md:flex-row gap-4 justify-between items-start md:items-center sticky top-0 z-20">
                 <div className="relative w-full md:w-96">
                     <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                     <input
@@ -167,29 +167,31 @@ export function ComplaintsTable() {
                     />
                 </div>
 
-                <div className="flex gap-2 w-full md:w-auto items-center">
-                    <span className="text-sm text-gray-500">
+                <div className="flex flex-wrap gap-2 w-full md:w-auto items-center justify-between md:justify-end">
+                    <span className="text-sm text-gray-500 order-last md:order-first">
                         {filteredComplaints.length} شكوى
                     </span>
 
-                    {activeFiltersCount > 0 && (
-                        <button
-                            onClick={clearFilters}
-                            className="h-10 px-3 rounded-lg border border-red-200 bg-red-50 text-red-600 text-sm font-medium hover:bg-red-100 transition-colors flex items-center gap-1"
-                        >
-                            <X className="w-4 h-4" />
-                            مسح ({activeFiltersCount})
-                        </button>
-                    )}
+                    <div className="flex gap-2 w-full md:w-auto mt-2 md:mt-0">
+                        {activeFiltersCount > 0 && (
+                            <button
+                                onClick={clearFilters}
+                                className="flex-1 md:flex-none h-10 px-3 rounded-lg border border-red-200 bg-red-50 text-red-600 text-sm font-medium hover:bg-red-100 transition-colors flex items-center justify-center gap-1"
+                            >
+                                <X className="w-4 h-4" />
+                                مسح ({activeFiltersCount})
+                            </button>
+                        )}
 
-                    <button
-                        onClick={() => setShowFilters(!showFilters)}
-                        className={`h-10 px-4 rounded-lg border flex items-center gap-2 text-sm font-medium transition-colors
-                        ${showFilters ? 'border-saudi-green bg-green-50 text-saudi-green' : 'border-gray-200 hover:bg-gray-50 text-gray-600'}`}
-                    >
-                        <SlidersHorizontal className="w-4 h-4" />
-                        <span>تصفية</span>
-                    </button>
+                        <button
+                            onClick={() => setShowFilters(!showFilters)}
+                            className={`flex-1 md:flex-none h-10 px-4 rounded-lg border flex items-center justify-center gap-2 text-sm font-medium transition-colors
+                            ${showFilters ? 'border-saudi-green bg-saudi-green/10 text-saudi-green' : 'border-gray-200 hover:bg-gray-50 text-gray-600'}`}
+                        >
+                            <SlidersHorizontal className="w-4 h-4" />
+                            <span>تصفية</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -307,7 +309,11 @@ export function ComplaintsTable() {
                         {filteredComplaints.length > 0 ? filteredComplaints.map((complaint) => (
                             <tr
                                 key={complaint.id}
-                                className="group hover:bg-stone-50 transition-colors cursor-pointer"
+                                className={`group transition-colors cursor-pointer row-accent
+                                    ${complaint.priority === 'critical' ? 'row-accent-critical' :
+                                        complaint.priority === 'high' ? 'row-accent-high' :
+                                            complaint.priority === 'medium' ? 'row-accent-medium' :
+                                                'row-accent-low'}`}
                                 onClick={() => router.push(`/complaints/${complaint.id}`)}
                             >
                                 <td className="px-4 py-3 font-mono text-gray-500 text-xs">
@@ -351,7 +357,7 @@ export function ComplaintsTable() {
                                     <div className="flex items-center gap-1.5">
                                         <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden w-12">
                                             <div
-                                                className={`h-full rounded-full ${complaint.riskScore > 80 ? 'bg-red-500' : complaint.riskScore > 50 ? 'bg-orange-500' : 'bg-green-500'}`}
+                                                className={`h-full rounded-full ${complaint.riskScore > 80 ? 'bg-red-500' : complaint.riskScore > 50 ? 'bg-amber-500' : 'bg-saudi-green'}`}
                                                 style={{ width: `${complaint.riskScore}%` }}
                                             />
                                         </div>
@@ -362,15 +368,21 @@ export function ComplaintsTable() {
                                     {new Date(complaint.timestamp).toLocaleDateString('ar-SA')}
                                 </td>
                                 <td className="px-4 py-3">
-                                    <button className="p-1.5 text-gray-400 hover:text-saudi-green hover:bg-green-50 rounded-lg transition-colors">
+                                    <button className="p-1.5 text-gray-400 hover:text-saudi-green hover:bg-saudi-green/10 rounded-lg transition-colors">
                                         <MoreHorizontal className="w-4 h-4" />
                                     </button>
                                 </td>
                             </tr>
                         )) : (
                             <tr>
-                                <td colSpan={9} className="py-20 text-center text-gray-400">
-                                    لا توجد شكاوى مطابقة لمعايير البحث
+                                <td colSpan={9} className="py-20 text-center">
+                                    <div className="flex flex-col items-center gap-3 text-gray-400">
+                                        <svg className="w-12 h-12 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                        </svg>
+                                        <span className="text-sm font-medium">لا توجد شكاوى مطابقة لمعايير البحث</span>
+                                        <span className="text-xs">جرّب تعديل معايير التصفية</span>
+                                    </div>
                                 </td>
                             </tr>
                         )}

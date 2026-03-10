@@ -32,10 +32,10 @@ export default function ComplaintDetailPage() {
 
     const getStatusColor = (status: string) => {
         switch (status) {
-            case 'resolved': return 'bg-green-100 text-green-700 border-green-200';
-            case 'in-progress': return 'bg-blue-100 text-blue-700 border-blue-200';
-            case 'escalated': return 'bg-purple-100 text-purple-700 border-purple-200';
-            default: return 'bg-gray-100 text-gray-700 border-gray-200';
+            case 'resolved': return 'bg-saudi-green/10 text-saudi-green border-saudi-green/20';
+            case 'in-progress': return 'bg-blue-50 text-blue-700 border-blue-200';
+            case 'escalated': return 'bg-rose-50 text-rose-700 border-rose-200';
+            default: return 'bg-slate-50 text-slate-600 border-slate-200';
         }
     };
 
@@ -50,10 +50,10 @@ export default function ComplaintDetailPage() {
 
     const getPriorityColor = (priority: string) => {
         switch (priority) {
-            case 'critical': return 'bg-red-100 text-red-700';
-            case 'high': return 'bg-orange-100 text-orange-700';
-            case 'medium': return 'bg-yellow-100 text-yellow-700';
-            default: return 'bg-blue-100 text-blue-700';
+            case 'critical': return 'bg-red-50 text-red-700 border border-red-200';
+            case 'high': return 'bg-amber-50 text-amber-700 border border-amber-200';
+            case 'medium': return 'bg-blue-50 text-blue-700 border border-blue-200';
+            default: return 'bg-slate-50 text-slate-600 border border-slate-200';
         }
     };
 
@@ -68,9 +68,9 @@ export default function ComplaintDetailPage() {
 
     const getDecisionColor = (decision: string | null) => {
         switch (decision) {
-            case 'accepted': return 'text-green-600';
+            case 'accepted': return 'text-saudi-green';
             case 'rejected': return 'text-red-600';
-            case 'escalated': return 'text-purple-600';
+            case 'escalated': return 'text-gray-600';
             default: return 'text-gray-600';
         }
     };
@@ -151,7 +151,7 @@ export default function ComplaintDetailPage() {
                                         {new Date(complaint.entityResponse.respondedAt).toLocaleDateString('ar-SA')}
                                     </div>
                                 </div>
-                                <div className="bg-blue-50 rounded-xl p-4 text-gray-700">
+                                <div className="bg-slate-50 rounded-xl p-4 text-slate-700">
                                     {complaint.entityResponse.responseText}
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -193,11 +193,11 @@ export default function ComplaintDetailPage() {
                                 <div className="text-xs text-gray-400">درجة الإلحاح</div>
                             </div>
                             <div className="bg-white rounded-lg p-3 text-center">
-                                <div className="text-2xl font-bold text-orange-500">{complaint.aiAnalysis.similarCasesCount}</div>
+                                <div className="text-2xl font-bold text-gray-500">{complaint.aiAnalysis.similarCasesCount}</div>
                                 <div className="text-xs text-gray-400">حالات مشابهة</div>
                             </div>
                             <div className="bg-white rounded-lg p-3 text-center">
-                                <div className="text-2xl font-bold text-blue-500">{complaint.aiAnalysis.estimatedResolutionDays}</div>
+                                <div className="text-2xl font-bold text-gray-700">{complaint.aiAnalysis.estimatedResolutionDays}</div>
                                 <div className="text-xs text-gray-400">أيام للحل (تقدير)</div>
                             </div>
                             <div className="bg-white rounded-lg p-3 text-center">
@@ -209,7 +209,7 @@ export default function ComplaintDetailPage() {
                         {/* Recommendations */}
                         <div className="mb-4">
                             <h4 className="font-bold text-gray-700 mb-3 flex items-center gap-2">
-                                <Lightbulb className="w-4 h-4 text-saudi-gold" />
+                                <Lightbulb className="w-4 h-4 text-gray-500" />
                                 التوصيات
                             </h4>
                             <div className="space-y-2">
@@ -242,19 +242,19 @@ export default function ComplaintDetailPage() {
 
                         {/* Root Cause Analysis */}
                         {complaint.aiAnalysis.rootCauseAnalysis && (
-                            <div className="mb-4 bg-orange-50 border border-orange-200 rounded-xl p-4">
-                                <h4 className="font-bold text-orange-700 mb-2">تحليل السبب الجذري</h4>
-                                <p className="text-sm text-orange-800">{complaint.aiAnalysis.rootCauseAnalysis}</p>
+                            <div className="mb-4 bg-gray-50 border border-gray-200 rounded-xl p-4">
+                                <h4 className="font-bold text-gray-700 mb-2">تحليل السبب الجذري</h4>
+                                <p className="text-sm text-gray-600">{complaint.aiAnalysis.rootCauseAnalysis}</p>
                             </div>
                         )}
 
                         {/* Suggested Meeting */}
                         {complaint.aiAnalysis.suggestedMeeting && (
-                            <div className="mb-4 bg-purple-50 border border-purple-200 rounded-xl p-4">
-                                <h4 className="font-bold text-purple-700 mb-2 flex items-center gap-2">
+                            <div className="mb-4 bg-saudi-green/5 border border-saudi-green/20 rounded-xl p-4">
+                                <h4 className="font-bold text-saudi-green mb-2 flex items-center gap-2">
                                     📅 اجتماع مقترح
                                 </h4>
-                                <p className="text-sm text-purple-800">{complaint.aiAnalysis.suggestedMeeting}</p>
+                                <p className="text-sm text-gray-700">{complaint.aiAnalysis.suggestedMeeting}</p>
                             </div>
                         )}
 
@@ -275,9 +275,9 @@ export default function ComplaintDetailPage() {
                                                     <span className="w-7 h-7 bg-saudi-green text-white rounded-full flex items-center justify-center text-sm font-bold">
                                                         {idx + 1}
                                                     </span>
-                                                    <span className={`px-2 py-0.5 rounded text-xs font-bold ${rec.priority === 'فوري' ? 'bg-red-100 text-red-700' :
-                                                            rec.priority === 'عاجل' ? 'bg-orange-100 text-orange-700' :
-                                                                'bg-blue-100 text-blue-700'
+                                                    <span className={`px-2 py-0.5 rounded text-xs font-bold ${rec.priority === 'فوري' ? 'bg-red-50 text-red-700' :
+                                                        rec.priority === 'عاجل' ? 'bg-amber-50 text-amber-700' :
+                                                            'bg-slate-50 text-slate-700'
                                                         }`}>
                                                         {rec.priority}
                                                     </span>
@@ -294,9 +294,9 @@ export default function ComplaintDetailPage() {
                                                     <span className="text-gray-500">الجهة المستهدفة:</span>
                                                     <p className="font-bold text-gray-700 mt-0.5">{rec.targetEntity}</p>
                                                 </div>
-                                                <div className="bg-green-50 rounded-lg p-2">
+                                                <div className="bg-saudi-green/10 rounded-lg p-2">
                                                     <span className="text-gray-500">النتيجة المتوقعة:</span>
-                                                    <p className="font-bold text-green-700 mt-0.5">{rec.expectedOutcome}</p>
+                                                    <p className="font-bold text-saudi-green mt-0.5">{rec.expectedOutcome}</p>
                                                 </div>
                                             </div>
 
@@ -396,14 +396,14 @@ export default function ComplaintDetailPage() {
                         </h3>
                         <div className="text-center">
                             <div className={`text-5xl font-bold mb-2 ${complaint.riskScore > 80 ? 'text-red-500' :
-                                complaint.riskScore > 50 ? 'text-orange-500' : 'text-green-500'
+                                complaint.riskScore > 50 ? 'text-gray-500' : 'text-saudi-green'
                                 }`}>
                                 {complaint.riskScore}%
                             </div>
                             <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
                                 <div
                                     className={`h-full rounded-full ${complaint.riskScore > 80 ? 'bg-red-500' :
-                                        complaint.riskScore > 50 ? 'bg-orange-500' : 'bg-green-500'
+                                        complaint.riskScore > 50 ? 'bg-amber-500' : 'bg-saudi-green'
                                         }`}
                                     style={{ width: `${complaint.riskScore}%` }}
                                 />
